@@ -1,0 +1,248 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+.toggle{
+    text-align: center;
+    color:white;
+    font-size: 1.5rem;
+    margin: 1.5% auto;
+}
+body{
+    height:100vh;
+    background: linear-gradient(135deg,#8052ec,#d161ff);
+    overflow:hidden;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+h1{
+    text-align: center;
+    margin-top: 2%;
+    color: white;
+    padding-top: 1.2%;
+}
+.wrapper{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 58%;
+    left:50%;
+}
+.container {
+    width: 24rem;
+    height: 24rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.01rem;
+    margin-left:1.7%;
+}
+
+.button-option {
+    background: white;
+    height: 7rem;
+    width: 7rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 5rem;
+    color: #d161ff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+/* restart */
+.restart {
+    --bezier: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --edge-light: hsla(0, 0%, 50%, 0.8);
+    --text-light: rgba(255, 255, 255, 0.4);
+    --back-color: 240, 40%;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0.7em 1em;
+    border-radius: 0.5em;
+    min-height: 2.4em;
+    min-width: 3em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 1.4em auto;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    font-weight: bold;
+    background: linear-gradient(140deg,
+            hsla(var(--back-color), 50%, 1) min(2em, 20%),
+            hsla(var(--back-color), 50%, 0.6) min(8em, 100%));
+    color: hsla(0, 0%, 90%);
+    border: 0;
+    box-shadow: inset 0.4px 1px 4px var(--edge-light);
+
+    transition: all 0.1s var(--bezier);
+}
+
+.restart:hover {
+    --edge-light: hsla(0, 0%, 50%, 1);
+    text-shadow: 0px 0px 10px var(--text-light);
+    box-shadow: inset 0.4px 1px 4px var(--edge-light),
+        2px 4px 8px hsla(0, 0%, 0%, 0.295);
+    transform: scale(1.1);
+    transition: 500ms ease-in-out;
+}
+
+.restart:active {
+    --text-light: rgba(255, 255, 255, 1);
+
+    background: linear-gradient(140deg,
+            hsla(var(--back-color), 50%, 1) min(2em, 20%),
+            hsla(var(--back-color), 50%, 0.6) min(8em, 100%));
+    box-shadow: inset 0.4px 1px 8px var(--edge-light),
+        0px 0px 8px hsla(var(--back-color), 50%, 0.6);
+    text-shadow: 0px 0px 20px var(--text-light);
+    color: hsla(0, 0%, 100%, 1);
+    letter-spacing: 0.1em;
+    transform: scale(1);
+}
+.popup{
+    background:linear-gradient(135deg, #8052ec, #d161ff);
+    height:100%;
+    width:100%;
+    position: absolute;
+    display: flex;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:2rem;
+    font-size: 3rem;
+}
+#message{
+    margin-top: -20%;
+    text-align: center;
+    font-size: 1em;
+}
+.popup.hide{
+    display: none;
+}
+/* new game */
+/* From Uiverse.io by zjssun */
+.newgame {
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #7d2ae8;
+    transition: all 0.2s ease;
+}
+
+.newgame:active {
+    transform: scale(0.96);
+}
+
+.newgame:before,
+.newgame:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+}
+
+.newgame:hover:before {
+    top: -70%;
+    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+        10% 10%, 18% 18%;
+    background-position: 50% 120%;
+    animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+    0% {
+        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+            40% 90%, 55% 90%, 70% 90%;
+    }
+
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+            50% 50%, 65% 20%, 90% 30%;
+    }
+
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+            50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+.newgame:hover::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 50% 0%;
+    animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+    0% {
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+            70% -10%, 70% 0%;
+    }
+
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+            105% 0%;
+    }
+
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+            110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+@media(max-height:1000px) and (max-width:500px)
+{
+    h1 {
+            text-align: center;
+            margin: 10% auto;
+            color: white;
+            padding-top:5%;
+        }
+    #message 
+        {
+            margin-top: -70%;
+            text-align: center;
+            font-size: 1em;
+        }
+        .newgame 
+        {
+            position: relative;
+            padding: 10px 22px;
+            border-radius: 6px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            background-color: #7d2ae8;
+            transition: all 0.2s ease;
+            height: 4rem;
+            font-size: 1.3rem;
+            width: 10rem;
+        }
+}
