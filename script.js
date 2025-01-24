@@ -4,7 +4,7 @@ let newGameBtn = document.querySelector('.newgame');
 let restartBtn = document.querySelector('.restart');
 let msgRef = document.getElementById('message');
 let toggleRef = document.querySelector('.toggle'); // Reference to the player turn display
-
+let xTurn=true;
 let winningPattern = [
     [0, 1, 2],
     [0, 3, 6],
@@ -16,7 +16,6 @@ let winningPattern = [
     [2, 4, 6],
 ];
 
-let xTurn = true; // Track whose turn it is
 let count = 0;
 
 const disableButtons = () => {
@@ -32,7 +31,13 @@ const enableButtons = () => {
     });
     popupRef.classList.add("hide");
     toggleRef.classList.remove("hide"); // Show the turn display
-    toggleRef.innerText = "X TURN"; // Reset to X turn
+    if(xTurn==true)
+    {
+        toggleRef.innerText = "X TURN"; // Reset to X turn
+    }
+    else{
+        toggleRef.innerText = "O TURN"; 
+    }
 };
 
 const winFunction = (letter) => {
@@ -40,6 +45,7 @@ const winFunction = (letter) => {
     if (letter == "X") {
         toggleRef.style.visibility = "hidden";
         msgRef.innerHTML = "&#x1F389;<br>X wins!";
+        turn(false);
     } else {
         toggleRef.style.visibility = "hidden";
         msgRef.innerHTML = "&#x1F389;<br>O wins!";
@@ -55,7 +61,15 @@ const drawFunction = () => {
 newGameBtn.addEventListener("click", () => {
     count = 0;
     enableButtons();
-    toggleRef.style.visibility = "visible";
+    toggleRef.style.visibility = "visible"
+    if(xTurn==true)
+    {
+        toggleRef.innerText = "X TURN"; // Reset to X turn
+    }
+    else
+    {
+        toggleRef.innerText = "O TURN"; 
+    }
 });
 
 restartBtn.addEventListener("click", () => {
@@ -74,7 +88,12 @@ const winChecker = () => {
         if (element1 != "" && element2 != "" && element3 != "") {
             if (element1 == element2 && element2 == element3) {
                 winFunction(element1);
-                return true;
+                if(element1=="X"){
+                    return false;
+                }
+                else{
+                    return true;
+                }
             }
         }
     }
